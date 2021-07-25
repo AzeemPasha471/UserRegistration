@@ -42,9 +42,40 @@ public class UserRegistration {
 		}
 	}
 
+	// method to check Email Valid or Invalid
+	public void validateEmail() {
+		System.out.println("Enter Email");
+		String email = sc.next();
+		// regex pattern for email(abdulazeem1027@gmail.com)
+		String regex = "^[a-zA-Z0-9]+[@][a-zA-Z]*[.][a-zA-Z]{2,4}$";
+		Pattern p = Pattern.compile(regex);
+		Matcher matcher = p.matcher(email);
+		boolean result = matcher.matches();
+
+		if (result) {
+			System.out.println("Valid Email");
+		} else {
+			System.out.println("Invalid Email");
+		}
+	}
+
 	public static void main(String[] args) {
 		UserRegistration registration = new UserRegistration();
-		registration.validateUsername();
-		registration.validateLastname();
+		Scanner sc = new Scanner(System.in);
+		while (true) {
+			System.out.println("Enter choce\n 1)UserName\n 2)LastName\n 3)Email\n");
+			int choice = sc.nextInt();
+			switch (choice) {
+			case 1:
+				registration.validateUsername();
+				break;
+			case 2:
+				registration.validateLastname();
+				break;
+			case 3:
+				registration.validateEmail();
+				break;
+			}
+		}
 	}
 }
