@@ -25,8 +25,26 @@ public class UserRegistration {
 		}
 	}
 
+	// method to check LastName Valid or Invalid
+	public void validateLastname() {
+		System.out.println("Enter LastName");
+		String lastName = sc.next();
+		// regex pattern for Lastname
+		String regex = "^[A-Z]{1}[a-zA-z0-9]{2,}$";
+		Pattern p = Pattern.compile(regex);
+		Matcher matcher = p.matcher(lastName);
+		boolean result = matcher.matches();
+
+		if (result) {
+			System.out.println("Valid username");
+		} else {
+			System.out.println("Invalid username");
+		}
+	}
+
 	public static void main(String[] args) {
 		UserRegistration registration = new UserRegistration();
 		registration.validateUsername();
+		registration.validateLastname();
 	}
 }
